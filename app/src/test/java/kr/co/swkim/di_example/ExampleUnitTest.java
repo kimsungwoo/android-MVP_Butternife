@@ -2,6 +2,7 @@ package kr.co.swkim.di_example;
 
 import org.junit.Test;
 
+import kr.co.swkim.di_example.model.CalcModel;
 import kr.co.swkim.di_example.presenter.CalcPresenterImpl;
 import kr.co.swkim.di_example.view.MainView;
 
@@ -20,8 +21,10 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         MainView mainView = mock(MainActivity.class);
+
+        CalcModel calcModel = new CalcModel(1,2);
         calcPresenter.setView(mainView);
-        calcPresenter.onPlus(1,2);
+        calcPresenter.onPlus(calcModel.getA(),calcModel.getB());
 
         assertEquals("더하기 테스트",calcPresenter.getCalc(), 3);
     }
@@ -29,8 +32,10 @@ public class ExampleUnitTest {
     @Test
     public void addition_notCorrect() throws Exception {
         MainView mainView = mock(MainActivity.class);
+
+        CalcModel calcModel = new CalcModel(1,2);
         calcPresenter.setView(mainView);
-        calcPresenter.onPlus(1,2);
+        calcPresenter.onPlus(calcModel.getA(),calcModel.getB());
 
         assertNotSame("더하기 테스트",calcPresenter.getCalc(), 2);
     }
