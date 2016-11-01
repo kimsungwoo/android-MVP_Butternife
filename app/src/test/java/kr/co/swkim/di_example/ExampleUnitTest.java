@@ -1,6 +1,7 @@
 package kr.co.swkim.di_example;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import kr.co.swkim.di_example.model.CalcModel;
 import kr.co.swkim.di_example.presenter.CalcPresenterImpl;
@@ -38,6 +39,8 @@ public class ExampleUnitTest {
         calcPresenter.onPlus(calcModel.getA(),calcModel.getB());
 
         assertNotSame("더하기 테스트",calcPresenter.getCalc(), 2);
+
+        Mockito.verify(mainView, Mockito.times(1)).onPlus("3");
     }
 
 
