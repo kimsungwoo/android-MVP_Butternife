@@ -1,14 +1,13 @@
-# 사내교육 
 
+## About 
+Butter Knife를 활용한 Android MVP Sample Project
 
-## Android Reducing BoilerPlate
-
-### Library...
+### Used Library
 ```
-Butternife,Dagger....
+Butternife,Dagger,
 ```
 
-### Butternife도입
+## Gradle Settings
 ```
 buildscript {
     repositories {
@@ -27,6 +26,17 @@ dependencies {
 }
 
 ```
+
+
+## Usage
+
+
+
+## ChangeLog: 
+
+- **MVP_BUTTERKNIFE 1.0.0**:
+	- Initial Created  
+	
 
 
 
