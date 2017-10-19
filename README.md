@@ -31,14 +31,14 @@ public void onPlus(String plus) {
 ### Usage Test
 ```
 @Test
-    public void addition_isCorrect() throws Exception {
-        MainView mainView = mock(MainActivity.class);
+public void addition_isCorrect() throws Exception {
+    MainView mainView = mock(MainActivity.class);
 
-        CalcModel calcModel = new CalcModel(1,2);
-        calcPresenter.setView(mainView);
-        calcPresenter.onPlus(calcModel.getA(),calcModel.getB());
+    CalcModel calcModel = new CalcModel(1,2);
+    calcPresenter.setView(mainView);
+    calcPresenter.onPlus(calcModel.getA(),calcModel.getB());
 
-        assertEquals("Plus Test",calcPresenter.getCalc(), 3);
+    assertEquals("Plus Test",calcPresenter.getCalc(), 3);
 }
 ```
 
