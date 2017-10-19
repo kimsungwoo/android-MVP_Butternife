@@ -1,38 +1,48 @@
 
-## About 
+
+### About 
 Butter Knife를 활용한 Android MVP Sample Project
+
+### MVP Pattern Wiki 
+https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
+
 
 ### Used Library
 ```
-Butternife,Dagger,
+Butternife,Esspresso
 ```
 
-## Gradle Settings
+
+### Usage
+A값과 B값을 더하는 예제
 ```
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-    }
+@OnClick({R.id.txtv_top_message, R.id.txtv_bottom_meessage})
+public void onTextMessageClick(TextView textView) {
+    CalcModel calcModel = new CalcModel(1, 2);
+
+    calcPresenter.onPlus(calcModel.getA(), calcModel.getB());
 }
-
-apply plugin: 'android-apt'
-
-dependencies {
-    compile 'com.jakewharton:butterknife:8.2.1'
-        apt 'com.jakewharton:butterknife-compiler:8.2.1'
+@Override
+public void onPlus(String plus) {
+    txtvTopMessage.setText(plus);
 }
-
 ```
 
+### Usage Test
+```
+@Test
+    public void addition_isCorrect() throws Exception {
+        MainView mainView = mock(MainActivity.class);
 
-## Usage
+        CalcModel calcModel = new CalcModel(1,2);
+        calcPresenter.setView(mainView);
+        calcPresenter.onPlus(calcModel.getA(),calcModel.getB());
 
+        assertEquals("Plus Test",calcPresenter.getCalc(), 3);
+}
+```
 
-
-## ChangeLog: 
+### ChangeLog: 
 
 - **MVP_BUTTERKNIFE 1.0.0**:
 	- Initial Created  
@@ -40,28 +50,3 @@ dependencies {
 
 
 
-### MVP Patter
-
->[뷰]
->-이벤트를 프리젠터에 전달
->-사용자UI제공
->
->[프리젠터]
->-유저 요청에 반응
->-뷰의 흐름제어
->
->[모델]
->-데이터
->-비지니스 로직
-
-
-
-
-### MVP 
-
->뷰 구현,UI 로직, 모델 구현을 분리
->복잡도감소
->- 분리에 따른 복잡도 <<< 뒤섞일 때의 복잡도
->생산성 향상시키기
->- 코드 변경이 상대적으로 쉬워짐
->- UI없이 테스트가능

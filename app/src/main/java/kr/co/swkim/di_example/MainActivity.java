@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @BindView(R.id.txtv_bottom_meessage)
     TextView txtvBottomMessage;
 
-    @BindString(R.string.app_name) String appName;
+    @BindString(R.string.app_name)
+    String appName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +41,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
 
+    @OnClick({R.id.txtv_top_message, R.id.txtv_bottom_meessage})
+    public void onTextMessageClick(TextView textView) {
+        CalcModel calcModel = new CalcModel(1, 2);
 
-    @OnClick({R.id.txtv_top_message,R.id.txtv_bottom_meessage})
-    public void onTextMessageClick(TextView textView){
-        CalcModel calcModel = new CalcModel(1,2);
-
-        calcPresenter.onPlus(calcModel.getA(),calcModel.getB());
+        calcPresenter.onPlus(calcModel.getA(), calcModel.getB());
     }
 
     @Override
